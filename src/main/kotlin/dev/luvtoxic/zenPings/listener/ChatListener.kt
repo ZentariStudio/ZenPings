@@ -10,11 +10,6 @@ class ChatListener(private val pingHandler: PingHandler) : Listener {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     fun onPlayerChat(event: AsyncChatEvent) {
-        val newMessage = pingHandler.processMessage(event.player, event.message())
-        if (newMessage != null) {
-            event.message(newMessage)
-        } else {
-            event.isCancelled = true
-        }
+        event.message(pingHandler.processMessage(event.player, event.message()))
     }
 }

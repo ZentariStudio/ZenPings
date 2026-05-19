@@ -1,7 +1,36 @@
-replacement-text: "<yellow>@<aqua>%player%</aqua>"
-sound: BLOCK_NOTE_BLOCK_PLING
-volume: 1.0
-pitch: 0.8
+# ZenPings Configuration
+# Use MiniMessage format for all text values: https://docs.advntr.dev/minimessage/format.html
+
+# The character(s) that must precede a player's name to trigger a ping.
 prefix: "@"
+
+# How the mentioned player's name will appear in the chat.
+# %player% will be replaced with the target player's name.
+# Note: Colors here can be overridden by the 'mention-colors' section below.
+replacement-text: "<yellow>@%player%"
+
+# Cooldown in seconds between pings for a player.
 cooldown-seconds: 5
-action-bar-message: "<yellow>%player% mentioned you!</yellow>"
+
+# Notification settings for the mentioned player.
+notifications:
+  # The sound played to the mentioned player.
+  # Sounds: https://jd.papermc.io/paper/1.21.1/org/bukkit/Sound.html
+  sound: "BLOCK_NOTE_BLOCK_PLING"
+  volume: 1.0
+  pitch: 1.0
+  
+  # The message shown in the action bar of the mentioned player.
+  # %player% will be replaced with the sender's name.
+  action-bar: "<gold><bold>PING!</bold> <yellow>%player% mentioned you!"
+
+# Permission-based colors for the sender's pings.
+# The plugin will check these in order from top to bottom.
+# If a player has 'zenpings.color.<key>', that color/format will be applied.
+mention-colors:
+  admin: "<red><bold>"
+  vip: "<gold>"
+  default: "<aqua>"
+
+# Message sent to the sender if they try to ping too frequently.
+cooldown-message: "<red>Please wait %seconds%s before pinging again!"

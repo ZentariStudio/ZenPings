@@ -1,22 +1,35 @@
 name: ZenPings
-version: 'v1.0'
+version: '${project.version}'
 main: dev.luvtoxic.zenPings.ZenPings
 api-version: '1.21'
 authors: [ luvtoxic ]
+description: A lightweight and modern player mention plugin.
+website: https://github.com/luvtoxic/ZenPings
+
 commands:
   ping:
     description: Toggle or manage pings
-    usage: /<command> [on|off|reload]
+    usage: /<command> [on|off|status|reload]
+
 permissions:
-  zenpings.toggle:
-    description: Allows toggling pings
+  zenpings.use:
+    description: Allows using the /ping command to toggle pings.
     default: true
   zenpings.reload:
-    description: Allows reloading the config
+    description: Allows reloading the plugin configuration.
     default: op
-  zenpings.color.default:
-    description: Default ping color
+  zenpings.ping:
+    description: Allows mentioning other players in chat.
     default: true
-  zenpings.color.vip:
-    description: VIP ping color
+  zenpings.ping.self:
+    description: Allows mentioning yourself in chat.
     default: false
+  zenpings.color.admin:
+    description: Applies the admin mention color.
+    default: op
+  zenpings.color.vip:
+    description: Applies the VIP mention color.
+    default: false
+  zenpings.color.default:
+    description: Applies the default mention color.
+    default: true

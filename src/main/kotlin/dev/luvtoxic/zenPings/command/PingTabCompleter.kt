@@ -10,16 +10,16 @@ class PingTabCompleter : TabCompleter {
         command: Command,
         alias: String,
         args: Array<out String>
-    ): List<String> {
+    ): List<String>? {
         if (args.size == 1) {
             val options = mutableListOf<String>()
-            if (sender.hasPermission("zenpings.toggle")) {
-                options.addAll(listOf("on", "off"))
+            if (sender.hasPermission("zenpings.use")) {
+                options.addAll(listOf("on", "off", "status"))
             }
             if (sender.hasPermission("zenpings.reload")) {
                 options.add("reload")
             }
-            return options
+            return options.filter { it.startsWith(args[0], ignoreCase = true) }
         }
         return emptyList()
     }
